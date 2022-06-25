@@ -76,14 +76,14 @@ async def get_weibo_news(app: Ariadne):
             1072621520, MessageChain.create(msg)
         )
         group_list = (
-        [await app.getGroup(601981487)]
+        [await app.getGroup()]
     )
         for group in group_list:
             await app.sendMessage(group, MessageChain.create(msg))
             await asyncio.sleep(random.uniform(2, 4))
 
         await app.sendFriendMessage(
-            1072621520,
+            ,
             MessageChain.create([Plain(f"微博推送结束，耗时{time_rec.total()}")]),
         )
 
@@ -114,7 +114,7 @@ async def get_game_news(app: Ariadne):
     save_pushed_list()
 
     group_list = (
-        [await app.getGroup(601981487)]
+        [await app.getGroup()]
     )
 
     for announce in new_list:
@@ -123,14 +123,14 @@ async def get_game_news(app: Ariadne):
         image = await game.get_screenshot(announce)
         msg = [Plain("明日方舟更新了新的游戏公告\n"), Image(data_bytes=image)]
         await app.sendFriendMessage(
-            1072621520, MessageChain.create(msg)
+            , MessageChain.create(msg)
         )
         for group in group_list:
             await app.sendMessage(group, MessageChain.create(msg))
             await asyncio.sleep(random.uniform(2, 4))
 
         await app.sendFriendMessage(
-            1072621520,
+            ,
             MessageChain.create([Plain(f"游戏公告推送结束，耗时{time_rec.total()}")]),
         )
 
