@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  mirai:
+    image: zhaozuohong/mah
+    container_name: mirai
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./bots:/app/bots
+      - ./config:/app/config
+    ports:
+      - "8080:8080"
